@@ -1,0 +1,17 @@
+{
+  "name": "vue-contacts-agenda",
+  "version": "1.0.0",
+  "description": "Agenda de contactos",
+  "main": "sass/custom-bulma.scss",
+  "scripts": {
+    "css-build": "node-sass --omit-source-map-url sass/custom-bulma.scss css/custom-bulma.css",
+    "css-watch": "npm run css-build -- --watch",
+    "start": "npm run css-watch"
+  },
+  "author": "Moma-Fans",
+  "license": "ISC",
+  "devDependencies": {
+    "bulma": "^0.9.3",
+    "node-sass": "^6.0.1"
+  }
+}

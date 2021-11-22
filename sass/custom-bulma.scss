@@ -1,0 +1,10 @@
+@charset "utf-8";
+
+// Fuentes
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;700&display=swap');
+
+// Actualización de variables globales
+$family-sans-serif: "Outfit", sans-serif;
+$primary: #880d51;
+
+@import "../node_modules/bulma/bulma.sass";
