@@ -3,8 +3,23 @@
 // Fuentes
 @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;700&display=swap');
 
+// Paleta de colores
+$c1: #313B2F;
+$c2: #6A736F;
+$c3: #B0B6BA;
+$c4: #CBCFD1;
+$c5: #FFD639;
+
+
 // Actualización de variables globales
 $family-sans-serif: "Outfit", sans-serif;
-$primary: #880d51;
+
+
+//Navbar
+$navbar-background-color: $c1;
+$navbar-item-color: $c3;
+$navbar-item-hover-background-color: none;
+$navbar-item-hover-color: $c5;
+
 
 @import "../node_modules/bulma/bulma.sass";
