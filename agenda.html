@@ -2,68 +2,112 @@
 
 <html lang="es">
 
-    <head>
+<head>
 
-        <meta charset="UTF-8">
-        <title>Agenda de contactos</title>
-        <link rel="stylesheet" href="css/custom-bulma.css">
+    <meta charset="UTF-8">
+    <title>Agenda de contactos</title>
+    <link rel="stylesheet" href="css/custom-bulma.css">
+    <script src="js/common.js"></script>
 
-    </head>
+</head>
 
-    <body>
-
-
-<nav class="navbar">
-		<div class="container p-4">
-			<div class="navbar-brand">
-				<a class="navbar-item" href="../">
-					<img src="../images/bulma.png" alt="Logo">
-				</a>
-				<span class="navbar-burger burger" data-target="navbarMenu">
-					<span></span>
-					<span></span>
-					<span></span>
-				</span>
-			</div>
-			<div id="navbarMenu" class="navbar-menu">
-				<div class="navbar-end">
-					<a class="navbar-item">Contactos</a>
-					<a class="navbar-item">Añadir contacto</a>
-					<a class="navbar-item">Acerca de..</a>
-				</div>
-			</div>
-		</div>
+<body>
 
 
-	</nav>
+    <nav class="navbar">
+        <div class="container p-4">
+            <div class="navbar-brand">
+                <div class="navbar-item">
+                    <img src="images/logo.png" alt="Logo">
+                </div>
+                <p class="navbar-item is-size-4">
+                    <b>CoolAgenda</b>
+                </p>
+                <span class="navbar-burger burger" data-target="navbarMenu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </span>
+            </div>
+            <div id="navbarMenu" class="navbar-menu">
+                <div class="navbar-end">
+                    <a href="#contacts" class="navbar-item">Contactos</a>
+                    <a href="#add-contact" class="navbar-item">Añadir contacto</a>
+                </div>
+            </div>
+        </div>
 
-    <section id="contacts">
-    <div class="container p-6">
-    <h1 class="title has-text-centered">Contactos</h1>
 
-    </div>
-    </section>
+    </nav>
 
-    <section id="add-contact">
-    <div class="container p-2"> 
-    <h1 class="title has-text-centered">Añadir Contacto</h1>
+    <section id="contacts" class="section">
+
+
+        <h1 class="title has-text-centered">Contactos</h1>
+
         <div class="columns has-text-centered">
-        <div class="column">
-            NOMBRE
+            <div class="column">
+                Roberto
+            </div>
+            <div class="column">
+                rbr@gmail.com
+            </div>
+            <div class="column">
+                12676
+            </div>
         </div>
-        <div class="column">
-            EMAIL
-        </div>
-        <div class="column">
-            TELÉFONO
-        </div>
-        </div>
-    </div>
+
+
     </section>
 
+    <section id="add-contact" class="section">
+
+        <h1 class="title has-text-centered">Añadir Contacto</h1>
+
+        <form class="container p-6">
+
+            <div class="field">
+                <label class="label">Nombre</label>
+                <div class="control">
+                    <input class="input" type="text">
+                </div>
+            </div>
+
+            <div class="field">
+                <label class="label">Correo electrónico</label>
+                <div class="control">
+                    <input class="input" type="text">
+                </div>
+            </div>
+
+            <div class="field">
+                <label class="label">Teléfono</label>
+                <div class="control">
+                    <input class="input" type="text">
+                </div>
+            </div>
+
+            <div class="field">
+                <div class="control">
+                    <button class="button p-2">Añadir</button>
+                </div>
+            </div>
+        </form>
+
+    </section>
+
+    <footer class="footer has-text-centered">
+
+        <p>&copy;MOMA-FANS</p>
+        <p>🔥 Powered by
+            <a href="https://vuejs.org/">Vuejs</a>,
+            <a href="https://bulma.io/">Bulma</a> &
+            <a href="https://firebase.google.com/?hl=es">Firebase</a>
+        </p>
+
+    </footer>
 
 
-
-    </body>
+</body>
 
 </html>

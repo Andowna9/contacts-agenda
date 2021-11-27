@@ -13,13 +13,28 @@ $c5: #FFD639;
 
 // Actualización de variables globales
 $family-sans-serif: "Outfit", sans-serif;
+$link-hover: none;
 
 
 //Navbar
 $navbar-background-color: $c1;
-$navbar-item-color: $c3;
+$navbar-item-color: $c4;
 $navbar-item-hover-background-color: none;
 $navbar-item-hover-color: $c5;
 
+//Footer
+$footer-background-color: $c1;
+$footer-color: $c4;
 
-@import "../node_modules/bulma/bulma.sass";
+// Importación de estilos necesarios
+@import "../node_modules/bulma/sass/utilities/_all.sass";
+@import "../node_modules/bulma/sass/base/_all.sass";
+@import "../node_modules/bulma/sass/helpers/_all.sass";
+@import "../node_modules/bulma/sass/components/navbar.sass";
+@import "../node_modules/bulma/sass/components/card.sass";
+@import "../node_modules/bulma/sass/form/_all.sass";
+@import "../node_modules/bulma/sass/elements/container.sass";
+@import "../node_modules/bulma/sass/elements/title.sass";
+@import"../node_modules/bulma/sass/layout/section.sass";
+@import"../node_modules/bulma/sass/layout/footer.sass";
+@import"../node_modules/bulma/sass/grid/columns.sass";
