@@ -5,8 +5,10 @@
 <head>
 
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Agenda de contactos</title>
     <link rel="stylesheet" href="css/custom-bulma.css">
+    <script src="js/vue.js"></script>
     <script src="js/common.js"></script>
 
 </head>
@@ -40,61 +42,86 @@
 
     </nav>
 
-    <section id="contacts" class="section">
+    <div id="app">
 
+        <section id="contacts" class="section">
 
-        <h1 class="title has-text-centered">Contactos</h1>
+            <h1 class="title has-text-centered">Contactos</h1>
 
-        <div class="columns has-text-centered">
-            <div class="column">
-                Roberto
+            <div v-if="contacts.length === 0">
+                <p>Todavía no hay contactos creados.</p>
             </div>
-            <div class="column">
-                rbr@gmail.com
-            </div>
-            <div class="column">
-                12676
-            </div>
-        </div>
 
+            <div id="contacts-list" v-else>
 
-    </section>
-
-    <section id="add-contact" class="section">
-
-        <h1 class="title has-text-centered">Añadir Contacto</h1>
-
-        <form class="container p-6">
-
-            <div class="field">
-                <label class="label">Nombre</label>
-                <div class="control">
-                    <input class="input" type="text">
+                <div id="colum-titles" class="columns has-text-centered is-hidden-mobile">
+                    <div class="column">
+                        Nombre
+                    </div>
+                    <div class="column">
+                        Email
+                    </div>
+                    <div class="column">
+                        Teléfono
+                    </div>
                 </div>
-            </div>
 
-            <div class="field">
-                <label class="label">Correo electrónico</label>
-                <div class="control">
-                    <input class="input" type="text">
+                <div v-for="contact in contacts" class="columns has-text-centered">
+                    <div class="column">
+                        {{ contact.name }}
+                    </div>
+                    <div class="column">
+                        {{ contact.email }}
+                    </div>
+                    <div class="column">
+                        {{ contact.phoneNumber }}
+                    </div>
                 </div>
+
             </div>
 
-            <div class="field">
-                <label class="label">Teléfono</label>
-                <div class="control">
-                    <input class="input" type="text">
+
+        </section>
+
+        <section id="add-contact" class="section">
+
+            <h1 class="title has-text-centered">Añadir Contacto</h1>
+
+            <form>
+
+                <div class="field">
+                    <label class="label">Nombre</label>
+                    <div class="control">
+                        <input v-model="name" class="input is-primary" type="text">
+                    </div>
                 </div>
-            </div>
 
-            <div class="field">
-                <div class="control">
-                    <button class="button p-2">Añadir</button>
+                <div class="field">
+                    <label class="label">Correo electrónico</label>
+                    <div class="control">
+                        <input v-model="email" class="input is-primary" type="text">
+                    </div>
                 </div>
-            </div>
-        </form>
 
-    </section>
+                <div class="field">
+                    <label class="label">Teléfono</label>
+                    <div class="control">
+                        <input v-model="phoneNumber" class="input is-primary" type="text">
+                    </div>
+                </div>
+
+                <div class="field">
+                    <div class="control">
+                        <button type="button" v-on:click="addContact" class="button is-primary p-2">Añadir</button>
+                    </div>
+                </div>
+            </form>
+
+        </section>
+
+    </div>
+
+    <script src="js/app.js"></script>
 
     <footer class="footer has-text-centered">
 

@@ -1,5 +1,7 @@
 @charset "utf-8";
 
+/* OVERRIDING BULMA VARIABLES */
+
 // Fuentes
 @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;700&display=swap');
 
@@ -10,13 +12,13 @@ $c3: #B0B6BA;
 $c4: #CBCFD1;
 $c5: #FFD639;
 
+$primary: $c1;
 
 // Actualización de variables globales
 $family-sans-serif: "Outfit", sans-serif;
 $link-hover: none;
 
-
-//Navbar
+// Navbar
 $navbar-background-color: $c1;
 $navbar-item-color: $c4;
 $navbar-item-hover-background-color: none;
@@ -25,6 +27,7 @@ $navbar-item-hover-color: $c5;
 //Footer
 $footer-background-color: $c1;
 $footer-color: $c4;
+
 
 // Importación de estilos necesarios
 @import "../node_modules/bulma/sass/utilities/_all.sass";
@@ -35,6 +38,37 @@ $footer-color: $c4;
 @import "../node_modules/bulma/sass/form/_all.sass";
 @import "../node_modules/bulma/sass/elements/container.sass";
 @import "../node_modules/bulma/sass/elements/title.sass";
+@import "../node_modules/bulma/sass/elements/button.sass";
 @import"../node_modules/bulma/sass/layout/section.sass";
 @import"../node_modules/bulma/sass/layout/footer.sass";
 @import"../node_modules/bulma/sass/grid/columns.sass";
+
+/* CUSTOM SELECTORS */
+
+html {
+
+    scroll-behavior: smooth;
+}
+
+#colum-titles {
+
+    text-transform: uppercase;
+    text-decoration: underline;
+    font-weight: bold;
+}
+
+#contacts {
+
+    #contacts-list {
+
+        padding: 1rem 0 1rem 0;
+    }
+}
+
+#add-contact {
+
+    form {
+
+        padding: 1rem 20% 1rem 20%;
+    }
+}
