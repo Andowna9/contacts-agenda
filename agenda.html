@@ -33,6 +33,7 @@
             </div>
             <div id="navbarMenu" class="navbar-menu">
                 <div class="navbar-end">
+                    <a href="#about" class="navbar-item">About</a>
                     <a href="#contacts" class="navbar-item">Contactos</a>
                     <a href="#add-contact" class="navbar-item">Añadir contacto</a>
                 </div>
@@ -42,13 +43,19 @@
 
     </nav>
 
+    <section id="about" class="section">
+        <h1 class="title has-text-centered"> About </h1>
+
+        <p class="has-text-centered"> CoolAgenda es un gestor de contactos muy simple e intuitivo. </p>
+    </section>
+
     <div id="app">
 
         <section id="contacts" class="section">
 
             <h1 class="title has-text-centered">Contactos</h1>
 
-            <div v-if="contacts.length === 0">
+            <div v-if="contacts.length === 0" class="has-text-centered">
                 <p>Todavía no hay contactos creados.</p>
             </div>
 
@@ -64,9 +71,10 @@
                     <div class="column">
                         Teléfono
                     </div>
+                    <div class="column"></div>
                 </div>
 
-                <div v-for="contact in contacts" class="columns has-text-centered">
+                <div v-for="(contact, index) in contacts" class="columns has-text-centered">
                     <div class="column">
                         {{ contact.name }}
                     </div>
@@ -75,6 +83,11 @@
                     </div>
                     <div class="column">
                         {{ contact.phoneNumber }}
+                    </div>
+                    <div class="column">
+                        <button type="button" class="button is-danger" v-on:click="removeContact(index)"> 
+                            X
+                        </button>
                     </div>
                 </div>
 

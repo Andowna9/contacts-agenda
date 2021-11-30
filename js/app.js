@@ -19,17 +19,36 @@ var app = new Vue({
 
     methods: {
 
-        addContact() {
-
+        validateContact() {
             // TODO Comprobar validez de los campos (regex)
+            const emailRegex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+            const phoneRegex = /^\d{10}$/;
 
-            const newContact = {name: this.name, email: this.email, phoneNumber: this.phoneNumber};
-            this.contacts.push(newContact);
+            // Autenticación
+            if (emailRegex.test(this.email)) {}
+            if (this.name === "") {}
+            if (phoneRegex.test(this.phoneNumber)) {}
 
-            // Reseteo
-            this.name = "";
-            this.email = "";
-            this.phoneNumber = ""; 
+            return true;
+        },
+
+        addContact() {
+            // Comprobaciones
+            if (this.validateContact()) {
+
+                const newContact = {name: this.name, email: this.email, phoneNumber: this.phoneNumber};
+                this.contacts.push(newContact);
+    
+                // Reseteo
+                this.name = "";
+                this.email = "";
+                this.phoneNumber = ""; 
+            }
+        },
+
+        removeContact(index) {
+            this.contacts.splice(index, 1);
         }
+
     }
 })
