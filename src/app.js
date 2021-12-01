@@ -1,4 +1,9 @@
-var app = new Vue({
+import Vue from 'vue';
+import Vuelidate from 'vuelidate';
+
+Vue.use(Vuelidate);
+
+new Vue({
 
     el: '#app',
     data: {
@@ -51,4 +56,4 @@ var app = new Vue({
         }
 
     }
-})
+});
