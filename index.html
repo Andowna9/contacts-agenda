@@ -98,6 +98,7 @@
                     <div class="control">
                         <input v-model="name" class="input is-primary" type="text">
                     </div>
+                    <p class="help is-danger" v-if="!$v.name.required">Campo obligatorio</p>
                 </div>
 
                 <div class="field">
@@ -105,6 +106,8 @@
                     <div class="control">
                         <input v-model="email" class="input is-primary" type="text">
                     </div>
+                    <p class="help is-danger" v-if="!$v.email.required">Campo obligatorio</p>
+                    <p class="help is-danger" v-if="!$v.email.email">Formato incorrecto</p>
                 </div>
 
                 <div class="field">
@@ -112,6 +115,8 @@
                     <div class="control">
                         <input v-model="phoneNumber" class="input is-primary" type="text">
                     </div>
+                    <p class="help is-danger" v-if="!$v.phoneNumber.required">Campo obligatorio</p>
+                    <p class="help is-danger" v-if="!$v.phoneNumber.phoneNumberRegex">Números de 9 cifras requerido</p>
                 </div>
 
                 <div class="field">
