@@ -1,4 +1,5 @@
 const path = require('path')
+const webpack = require('webpack')
 
 module.exports = {
 
@@ -12,5 +13,13 @@ module.exports = {
         alias: {
           'vue$': 'vue/dist/vue.esm.js'
         }
-    }
+    },
+
+    plugins: [
+        // fix "process is not defined" error:
+        // (do "npm install process" before running the build)
+        new webpack.ProvidePlugin({
+          process: 'process/browser',
+        }),
+      ]
 }
