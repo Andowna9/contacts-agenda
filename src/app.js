@@ -1,11 +1,7 @@
 import Vue from 'vue';
 import Vuelidate from 'vuelidate';
-import { required, email } from 'vuelidate/lib/validators'
-import { helpers } from 'vuelidate/lib/validators'
 
 Vue.use(Vuelidate);
-
-const phoneNumberRegex = helpers.regex('phoneNumberRegex', /^\d{9}$/)
 
 new Vue({
 
@@ -26,32 +22,32 @@ new Vue({
 
     },
 
-    validations: {
-        name: {
-            required,
-        },
-        email: {
-            required,
-            email,
-        },
-        phoneNumber: {
-            required,
-            phoneNumberRegex,
-        }
-    },
-
     methods: {
 
+        validateContact() {
+            // TODO Comprobar validez de los campos (regex)
+            const emailRegex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+            const phoneRegex = /^\d{10}$/;
+
+            // Autenticación
+            if (emailRegex.test(this.email)) {}
+            if (this.name === "") {}
+            if (phoneRegex.test(this.phoneNumber)) {}
+
+            return true;
+        },
+
         addContact() {
+            // Comprobaciones
+            if (this.validateContact()) {
 
-            if (!this.$v.$invalid) {
-                const newContact = { name: this.name, email: this.email, phoneNumber: this.phoneNumber };
+                const newContact = {name: this.name, email: this.email, phoneNumber: this.phoneNumber};
                 this.contacts.push(newContact);
-
+    
                 // Reseteo
                 this.name = "";
                 this.email = "";
-                this.phoneNumber = "";
+                this.phoneNumber = ""; 
             }
         },
 
