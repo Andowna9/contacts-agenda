@@ -51,6 +51,8 @@ new Vue({
 
         addContact() {
 
+            this.$v.$touch();
+
             if (!this.$v.$invalid) {
 
                 const newContact = { name: this.name, email: this.email, phoneNumber: this.phoneNumber };
@@ -61,12 +63,7 @@ new Vue({
                 this.email = '';
                 this.phoneNumber = '';
 
-                this.$v.$error = false;
-            }
-
-            else {
-
-                this.$v.$touch();
+                this.$v.$reset();
             }
         },
 
