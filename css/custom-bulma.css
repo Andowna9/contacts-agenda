@@ -5678,3 +5678,6 @@ html {
 #features-list {
   display: table;
   margin: 0 auto; }
+
+.has-error {
+  background-color: black; }

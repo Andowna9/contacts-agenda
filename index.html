@@ -65,7 +65,7 @@
                     <div class="column"></div>
                 </div>
 
-                <div v-for="(contact, index) in contacts" class="columns has-text-centered">
+                <div v-for="contact in contacts" class="columns has-text-centered is-vcentered">
                     <div class="column">
                         {{ contact.name }}
                     </div>
@@ -76,7 +76,7 @@
                         {{ contact.phoneNumber }}
                     </div>
                     <div class="column">
-                        <button type="button" class="button is-danger" v-on:click="removeContact(index)"> 
+                        <button type="button" class="button is-danger" v-on:click="removeContact(contact['.key'])">
                             X
                         </button>
                     </div>
@@ -94,29 +94,40 @@
             <form>
 
                 <div class="field">
-                    <label class="label">Nombre</label>
-                    <div class="control">
-                        <input v-model="name" class="input is-primary" type="text">
+                        <label class="label">Nombre:</label>
+                        <div class="control">
+                            <input v-model.lazy="name" class="input is-primary" 
+                            v-bind:class="{'is-danger' : $v.name.$error}" type="text">
+                        </div>
+                    <div v-if="$v.name.$error">
+                        <p class="help is-danger" v-if="!$v.name.required">Campo obligatorio</p>
                     </div>
-                    <p class="help is-danger" v-if="!$v.name.required">Campo obligatorio</p>
                 </div>
 
                 <div class="field">
-                    <label class="label">Correo electrónico</label>
-                    <div class="control">
-                        <input v-model="email" class="input is-primary" type="text">
+                    <label class="label">Correo electrónico:</label>
+                        <div class="control">
+                            <input v-model.lazy="email" class="input is-primary" 
+                            v-bind:class="{'is-danger' : $v.email.$error}" type="text">
+                        </div>
+
+                    <div v-if="$v.email.$error">
+                        <p class="help is-danger" v-if="!$v.email.required">Campo obligatorio</p>
+                        <p class="help is-danger" v-if="!$v.email.email">Formato incorrecto</p>
                     </div>
-                    <p class="help is-danger" v-if="!$v.email.required">Campo obligatorio</p>
-                    <p class="help is-danger" v-if="!$v.email.email">Formato incorrecto</p>
+
                 </div>
 
                 <div class="field">
-                    <label class="label">Teléfono</label>
+                    <label class="label">Teléfono:</label>
                     <div class="control">
-                        <input v-model="phoneNumber" class="input is-primary" type="text">
+                        <input v-model.lazy="phoneNumber" class="input is-primary" 
+                        v-bind:class="{'is-danger' : $v.phoneNumber.$error}" type="text">
                     </div>
-                    <p class="help is-danger" v-if="!$v.phoneNumber.required">Campo obligatorio</p>
-                    <p class="help is-danger" v-if="!$v.phoneNumber.phoneNumberRegex">Números de 9 cifras requerido</p>
+                    <div v-if="$v.phoneNumber.$error">
+                        <p class="help is-danger" v-if="!$v.phoneNumber.required">Campo obligatorio</p>
+                        <p class="help is-danger" v-if="!$v.phoneNumber.phoneNumberRegex">Número de 9 cifras requerido</p>
+                    </div>
                 </div>
 
                 <div class="field">
@@ -129,7 +140,7 @@
         </section>
 
     </div>
-    
+
     <section id="about" class="section">
         <h1 class="title has-text-centered">About</h1>
         <div class="content">
@@ -137,7 +148,7 @@
                 Coolgenda es una agenda de contactos muy simple e intuitiva
                 por las siguientes razones:
             </p>
-        
+
             <ul id="features-list">
                 <li>Diseño moderno y minimalista.</li>
                 <li>Interactividad mejorada.</li>

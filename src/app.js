@@ -1,29 +1,36 @@
+// Vue
 import Vue from 'vue';
+
+// Validations
 import Vuelidate from 'vuelidate';
-import { required, email } from 'vuelidate/lib/validators'
-import { helpers } from 'vuelidate/lib/validators'
+import { required, email, helpers } from 'vuelidate/lib/validators'
 
+// Database
+import { rtdbPlugin } from 'vuefire';
+import { db } from'./db';
+
+// Add vue plugins
 Vue.use(Vuelidate);
+Vue.use(rtdbPlugin);
 
-const phoneNumberRegex = helpers.regex('phoneNumberRegex', /^\d{9}$/)
+const phoneNumberRegex = helpers.regex('phoneNumberRegex', /^\d{9}$/);
 
+// Create main Vue instance
 new Vue({
 
     el: '#app',
     data: {
 
-        name: "",
-        email: "",
-        phoneNumber: "",
+        name: '',
+        email: '',
+        phoneNumber: '',
 
-        contacts: [
+        contacts: []
+    },
 
-            { name: 'Roberto', email: 'rbt@gmail.com', phoneNumber: '12676' },
-            { name: 'Iker', email: 'ikk@gmail.com', phoneNumber: '21365' },
-            { name: 'Julen', email: 'julen@gmail.com', phoneNumber: '999213' }
+    firebase: {
 
-        ]
-
+        contacts: db.ref('contacts')
     },
 
     validations: {
@@ -45,18 +52,26 @@ new Vue({
         addContact() {
 
             if (!this.$v.$invalid) {
+
                 const newContact = { name: this.name, email: this.email, phoneNumber: this.phoneNumber };
-                this.contacts.push(newContact);
+                db.ref('contacts').push(newContact);
 
                 // Reseteo
-                this.name = "";
-                this.email = "";
-                this.phoneNumber = "";
+                this.name = '';
+                this.email = '';
+                this.phoneNumber = '';
+
+                this.$v.$error = false;
+            }
+
+            else {
+
+                this.$v.$touch();
             }
         },
 
-        removeContact(index) {
-            this.contacts.splice(index, 1);
+        removeContact(id) {
+           db.ref('contacts/' + id).remove();
         }
 
     }

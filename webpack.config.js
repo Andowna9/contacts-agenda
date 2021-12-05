@@ -1,4 +1,5 @@
-const path = require('path')
+const path = require('path');
+const webpack = require('webpack');
 
 module.exports = {
 
@@ -8,9 +9,31 @@ module.exports = {
         path: path.resolve(__dirname, 'js'),
         filename: 'app-bundle.js'
     },
+
     resolve: {
         alias: {
-          'vue$': 'vue/dist/vue.esm.js'
+          'vue$': 'vue/dist/vue.common.dev.js'
         }
-    }
+    },
+
+    module: {
+
+        rules: [
+            {
+            test: /\.js$/,
+            exclude: /node_modules/,
+            use: {
+                loader: 'babel-loader',
+                options: { presets: [['@babel/preset-env']] }
+              }
+            }
+          ]
+    },
+
+    plugins: [
+ 
+        new webpack.ProvidePlugin({
+          process: 'process/browser'
+    })
+    ]
 }
