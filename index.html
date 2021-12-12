@@ -65,7 +65,7 @@
                     <div class="column"></div>
                 </div>
 
-                <div v-for="contact in contacts" class="columns has-text-centered is-vcentered">
+                <div v-for="contact in contacts" class="columns has-text-centered is-vcentered is-mobile">
                     <div class="column">
                         {{ contact.name }}
                     </div>
@@ -94,11 +94,11 @@
             <form>
 
                 <div class="field">
-                        <label class="label">Nombre:</label>
-                        <div class="control">
-                            <input v-model.lazy="name" class="input is-primary" 
+                    <label class="label">Nombre:</label>
+                    <div class="control">
+                        <input v-model.lazy="name" class="input is-primary"
                             v-bind:class="{'is-danger' : $v.name.$error}" type="text">
-                        </div>
+                    </div>
                     <div v-if="$v.name.$error">
                         <p class="help is-danger" v-if="!$v.name.required">Campo obligatorio</p>
                     </div>
@@ -106,10 +106,10 @@
 
                 <div class="field">
                     <label class="label">Correo electrónico:</label>
-                        <div class="control">
-                            <input v-model.lazy="email" class="input is-primary" 
+                    <div class="control">
+                        <input v-model.lazy="email" class="input is-primary"
                             v-bind:class="{'is-danger' : $v.email.$error}" type="text">
-                        </div>
+                    </div>
 
                     <div v-if="$v.email.$error">
                         <p class="help is-danger" v-if="!$v.email.required">Campo obligatorio</p>
@@ -121,12 +121,13 @@
                 <div class="field">
                     <label class="label">Teléfono:</label>
                     <div class="control">
-                        <input v-model.lazy="phoneNumber" class="input is-primary" 
-                        v-bind:class="{'is-danger' : $v.phoneNumber.$error}" type="text">
+                        <input v-model.lazy="phoneNumber" class="input is-primary"
+                            v-bind:class="{'is-danger' : $v.phoneNumber.$error}" type="text">
                     </div>
                     <div v-if="$v.phoneNumber.$error">
                         <p class="help is-danger" v-if="!$v.phoneNumber.required">Campo obligatorio</p>
-                        <p class="help is-danger" v-if="!$v.phoneNumber.phoneNumberRegex">Número de 9 cifras requerido</p>
+                        <p class="help is-danger" v-if="!$v.phoneNumber.phoneNumberRegex">Número de 9 cifras requerido
+                        </p>
                     </div>
                 </div>
 
@@ -156,6 +157,18 @@
             </ul>
 
         </div>
+
+        <div class="container is-flex is-justify-content-center">
+            <blockquote class="twitter-tweet">
+                <p lang="es" dir="ltr">He añadido un vídeo a una lista de reproducción de
+                    <a href="https://twitter.com/YouTube?ref_src=twsrc%5Etfw">@YouTube</a> (
+                    <a href="https://t.co/TCnF9YqsIk">https://t.co/TCnF9YqsIk</a> - Kara Sevda 1//Avance).
+                </p>&mdash; Andowna9 (@Andowna_9)
+                <a href="https://twitter.com/Andowna_9/status/1067002807956336640?ref_src=twsrc%5Etfw">November 26,
+                    2018</a>
+            </blockquote>
+        </div>
+        <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
     </section>
 
     <script src="js/app-bundle.js"></script>
